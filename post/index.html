@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:,">
+<title>What do I post today? | qeen</title>
+<meta name="description" content="Every week, we bring you ideas that fit your business, and a clear plan to make them.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="What do I post today? | qeen">
+<meta property="og:description" content="Every week, we bring you ideas that fit your business, and a clear plan to make them.">
+<!-- og:image must be an absolute URL once hosted: replace with https://<your-domain>/img/hero-light.webp -->
+<meta property="og:image" content="img/hero-light.webp">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- ============================================================
+     TRACKING SCRIPTS: paste analytics / pixel snippets here
+     (e.g. Google Tag Manager, Meta Pixel, TikTok Pixel, Snap Pixel)
+     ============================================================ -->
+
+<script>
+// Theme and language are set before first paint: ?lang= wins, then the saved choice, then the browser.
+(function () {
+  var r = document.documentElement, t, l, q = new URLSearchParams(location.search).get("lang");
+  try { t = localStorage.getItem("qeen-theme"); l = localStorage.getItem("qeen-lang"); } catch (e) {}
+  if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  if (q === "ar" || q === "en") l = q;
+  if (l !== "ar" && l !== "en") l = (navigator.language || "").toLowerCase().indexOf("ar") === 0 ? "ar" : "en";
+  r.setAttribute("data-theme", t);
+  r.lang = l; r.dir = l === "ar" ? "rtl" : "ltr";
+  // Preload only the active theme's hero image; the other theme's images load after the page.
+  var p = document.createElement("link");
+  p.rel = "preload"; p.as = "image"; p.type = "image/webp"; p.href = "img/hero-" + t + ".webp";
+  p.setAttribute("fetchpriority", "high");
+  document.head.appendChild(p);
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800&family=Tajawal:wght@500;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFFFFF; --surface: #F4F7F1; --ink: #1F3A1F; --ink-2: rgba(31, 58, 31, .72);
+    --line: rgba(31, 58, 31, .12); --logo: #1F3A1F; --bar-bg: rgba(255, 255, 255, .96); --brand: url(#ink-light);
+    --brand-knock: url(#knock-light);
+    --lime: #8FE860; --on-lime: #1F3A1F;
+    --radius: 16px; --pad: 20px; --header-h: 60px; --hh: 63px; --bar-h: 81px;
+    --font: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --font-ar: "Tajawal", "Geeza Pro", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+    color-scheme: light;
+  }
+  :root[data-theme="dark"] {
+    --bg: #0E120E; --surface: #172017; --ink: #EAF2E6; --ink-2: rgba(234, 242, 230, .72);
+    --line: rgba(234, 242, 230, .14); --logo: #8FE860; --bar-bg: rgba(14, 18, 14, .96);
+    --brand: url(#ink-dark); --brand-knock: url(#knock-dark);
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+      --bg: #0E120E; --surface: #172017; --ink: #EAF2E6; --ink-2: rgba(234, 242, 230, .72);
+      --line: rgba(234, 242, 230, .14); --logo: #8FE860; --bar-bg: rgba(14, 18, 14, .96);
+      --brand: url(#ink-dark); --brand-knock: url(#knock-dark);
+      color-scheme: dark;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--hh) + 12px); }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 500 17px/1.55 var(--font); -webkit-font-smoothing: antialiased;
+  }
+  :lang(ar) { font-family: var(--font-ar); }
+  body:lang(ar) { line-height: 1.7; }
+  img { display: block; max-width: 100%; height: auto; }
+  h1, h2, h3, h4 { margin: 0; font-weight: 800; letter-spacing: -0.01em; }
+  :lang(ar) h1, :lang(ar) h2, :lang(ar) h3, :lang(ar) h4 { letter-spacing: 0; }
+  p { margin: 0; }
+  a { color: var(--ink); }
+  button { font: inherit; color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 var(--pad); }
+  .logo-svg { display: block; height: 28px; width: auto; color: var(--logo); fill: currentColor; }
+
+  .hl { background: var(--lime); color: var(--on-lime); padding: 0 .12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+  .btn {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 56px; padding: 0 24px; width: 100%;
+    background: var(--lime); color: var(--on-lime); border-radius: 14px;
+    font-weight: 600; font-size: 17px; line-height: 1.2; text-decoration: none; text-align: center;
+    transition: transform .15s ease, filter .15s ease;
+  }
+  .btn:hover { filter: brightness(.96); }
+  .btn:active { transform: scale(.985); }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+  /* Header */
+  .header { position: sticky; top: 0; z-index: 20; background: var(--bg); padding-top: env(safe-area-inset-top); }
+  .header .wrap { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .tools { display: flex; align-items: center; gap: 6px; }
+  .icon-btn {
+    width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: none; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; color: var(--ink);
+  }
+  .icon-btn svg { width: 22px; height: 22px; }
+  .icon-btn .sun { display: none; }
+  :root[data-theme="dark"] .icon-btn .sun { display: block; }
+  :root[data-theme="dark"] .icon-btn .moon { display: none; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 12px; border: 0;
+    border-radius: 999px; background: var(--surface); color: var(--ink); cursor: pointer;
+    font-weight: 600; font-size: 14px; line-height: 1;
+  }
+  .pill svg { width: 16px; height: 16px; }
+  .pill[lang="ar"] { font-family: var(--font-ar); font-size: 16px; }
+  .pill[lang="en"] { font-family: var(--font); }
+  .btn-sm {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px;
+    background: var(--lime); color: var(--on-lime); border-radius: 12px;
+    font-weight: 600; font-size: 14px; line-height: 1; text-decoration: none; white-space: nowrap;
+  }
+  @media (max-width: 359px) { .btn-sm { display: none; } }
+  .progress { height: 3px; background: var(--line); }
+  .progress span { display: block; height: 100%; width: 100%; background: var(--lime); transform-origin: 0 50%; transform: scaleX(0); }
+  [dir="rtl"] .progress span { transform-origin: 100% 50%; }
+
+  /* Images sit on the page's own background colour (one version per theme), so no box shows */
+  .art { position: relative; aspect-ratio: 1 / 1; }
+  .art img { width: 100%; height: 100%; object-fit: contain; }
+
+  /* Hero */
+  .hero { padding: 14px 0 0; }
+  .hero h1 { font-size: 34px; line-height: 1.1; text-transform: uppercase; }
+  .hero h1:lang(ar) { text-transform: none; line-height: 1.35; }
+  .hero .sub { margin-top: 12px; color: var(--ink-2); }
+  .hero .btn { margin-top: 12px; }
+  .micro { margin-top: 6px; font-size: 14px; color: var(--ink-2); text-align: center; }
+  .hero .art { margin: 0; }
+
+  /* Scroll cue */
+  .cue {
+    position: fixed; left: 0; right: 0; margin: 0 auto; bottom: calc(20px + env(safe-area-inset-bottom)); z-index: 25;
+    width: 56px; height: 56px; padding: 0; border: 0; border-radius: 50%;
+    background: var(--lime); color: var(--on-lime); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity .3s ease, visibility .3s ease;
+    animation: cue-bounce 1.8s ease-in-out infinite;
+  }
+  .cue svg { width: 24px; height: 24px; }
+  .cue.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+  @keyframes cue-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  /* Trusted by: an endless logo row in one ink colour */
+  .brands { padding: 8px 0 44px; }
+  .brands h2 { font-size: 15px; font-weight: 600; color: var(--ink-2); text-align: center; letter-spacing: 0; }
+  .marquee {
+    margin-top: 12px; overflow: hidden; outline-offset: 4px;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+  .marquee:focus-visible { outline: 3px solid var(--ink); }
+  .marquee-track { display: flex; width: max-content; direction: ltr; animation: marquee 40s linear infinite; }
+  [dir="rtl"] .marquee-track { animation-direction: reverse; }
+  .marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  .logos { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
+  .logos li { flex: none; padding: 0 22px; }
+  .logos img { height: 32px; width: auto; max-width: none; filter: var(--brand); }
+  .logos img.knock { filter: var(--brand-knock); }
+  .filters { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+  /* Steps: stacked without JS; a pinned stage with cross-fading slides when .fade-on */
+  .steps { border-top: 1px solid var(--line); }
+  .stage { max-width: 1080px; margin: 0 auto; padding: 48px var(--pad) 24px; }
+  .steps h2, .close h2, .faq h2, .pricing h2 { font-size: 26px; line-height: 1.2; }
+  .track { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 56px; }
+  .slide .art { width: 100%; max-width: 480px; margin: 0 auto 20px; }
+  .slide-copy .head { display: flex; align-items: flex-start; gap: 12px; }
+  .num {
+    flex: none; display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%; background: var(--lime);
+    font-family: var(--font); font-weight: 800; font-size: 18px; color: var(--on-lime);
+  }
+  .slide h3 { font-size: 22px; line-height: 1.25; padding-top: 6px; }
+  .slide h3:lang(ar) { line-height: 1.4; padding-top: 4px; }
+  .slide p { margin-top: 10px; color: var(--ink-2); }
+  .dots { display: none; }
+
+  .fade-on .stage {
+    position: sticky; top: var(--hh); padding-top: 16px; padding-bottom: 6px;
+    height: calc(100vh - var(--hh) - var(--bar-h)); height: calc(100svh - var(--hh) - var(--bar-h));
+    display: flex; flex-direction: column;
+  }
+  .fade-on .stage h2 { flex: none; }
+  .fade-on .stage-body { flex: 1 1 0; min-height: 0; display: flex; align-items: center; }
+  .fade-on .track { flex: 1; margin: 0; display: grid; gap: 0; }
+  .fade-on .slide { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .45s ease, visibility 0s linear .45s; }
+  .fade-on .slide.on { opacity: 1; visibility: visible; transition: opacity .45s ease, visibility 0s; }
+  .fade-on .slide-inner { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .fade-on .slide .art { width: var(--img, 280px); height: var(--img, 280px); max-width: none; margin: 0; flex: none; }
+  .fade-on .slide-copy { width: 100%; min-height: var(--copy-h, 0px); }
+  .fade-on .dots { flex: none; display: flex; justify-content: center; gap: 4px; }
+  .dots button {
+    width: 44px; height: 32px; padding: 0; border: 0; background: none; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .dots button::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--line); transition: background .2s ease, transform .2s ease; }
+  .dots button[aria-current="true"]::before { background: var(--lime); transform: scale(1.25); }
+  .measure { position: fixed; left: 0; top: 0; visibility: hidden; pointer-events: none; z-index: -1; }
+
+  @media (max-width: 899px) and (max-height: 760px) {
+    .fade-on .stage h2 { font-size: 21px; }
+    .fade-on .slide p { font-size: 15px; line-height: 1.45; margin-top: 6px; }
+    .fade-on .slide p:lang(ar) { line-height: 1.6; }
+    .fade-on .slide h3 { font-size: 19px; padding-top: 5px; }
+    .fade-on .num { width: 34px; height: 34px; font-size: 16px; }
+    .fade-on .slide-inner { gap: 10px; }
+  }
+
+  /* Close */
+  .close { padding: 48px 0 56px; }
+  .close .btn { margin-top: 24px; }
+
+  /* Trust */
+  .trust { background: var(--surface); padding: 48px 0; }
+  .facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+  .facts li { display: flex; gap: 14px; align-items: flex-start; font-weight: 600; }
+  .facts svg { flex: none; width: 28px; height: 28px; margin-top: 1px; stroke: var(--ink); }
+
+  /* FAQ */
+  .faq { padding: 56px 0 24px; }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq details:first-of-type { margin-top: 20px; border-top: 1px solid var(--line); }
+  .faq summary {
+    list-style: none; cursor: pointer; min-height: 56px; padding-block: 16px; padding-inline: 0 40px; position: relative;
+    font-weight: 600; font-size: 17px;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: ""; position: absolute; inset-inline-end: 6px; top: 50%; width: 10px; height: 10px; margin-top: -7px;
+    border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: rotate(45deg);
+    transition: transform .2s ease;
+  }
+  .faq details[open] summary::after { transform: rotate(-135deg); margin-top: -2px; }
+  .faq details p { padding: 0 0 20px; color: var(--ink-2); }
+
+  /* Pricing */
+  .pricing { padding: 56px 0 64px; }
+  .card { background: var(--surface); border-radius: var(--radius); padding: 24px 20px; }
+  .trial { margin-top: 24px; }
+  .trial h3 { font-size: 22px; line-height: 1.3; }
+  .trial > p { margin-top: 8px; color: var(--ink-2); }
+  .trial h4 { margin-top: 20px; font-size: 17px; }
+  .notes { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); display: grid; gap: 10px; color: var(--ink-2); }
+  .notes strong { color: var(--ink); font-weight: 600; }
+  .plans { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 16px; }
+  .plan { display: flex; flex-direction: column; }
+  .plan h3 { font-size: 22px; }
+  .plan .for { margin-top: 4px; color: var(--ink-2); }
+  .plan .price { margin-top: 18px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+  .plan .amount { font-size: 40px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; }
+  .plan .amount:lang(ar) { letter-spacing: 0; line-height: 1.2; }
+  .plan .per { font-size: 15px; color: var(--ink-2); }
+  .ticks { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+  .ticks li { position: relative; padding-inline-start: 30px; }
+  .ticks li::before {
+    content: ""; position: absolute; inset-inline-start: 0; top: 4px; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.5l2.6 2.6L14 7.6' fill='none' stroke='%231F3A1F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 20px no-repeat;
+  }
+  :lang(ar) .ticks li::before { top: 6px; }
+  .plan .btn { margin-top: 24px; }
+  .includes { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .includes h3 { font-size: 18px; }
+
+  /* Footer: bottom padding keeps the sticky bar from covering it */
+  .footer { border-top: 1px solid var(--line); padding: 40px 0 calc(40px + var(--bar-h)); color: var(--ink-2); font-size: 15px; }
+  .footer .wrap { display: grid; gap: 16px; }
+  .foot-brand { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; }
+  .footer .logo-svg { height: 24px; }
+  .foot-links { display: flex; gap: 8px; margin-inline-start: -10px; }
+  .foot-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; color: var(--ink-2); }
+
+  .bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    background: var(--bar-bg); border-top: 1px solid var(--line);
+    padding: 12px var(--pad) calc(12px + env(safe-area-inset-bottom));
+    transform: translateY(110%); transition: transform .25s ease; visibility: hidden;
+  }
+  .bar.show { transform: none; visibility: visible; }
+  .bar .btn { max-width: 520px; margin: 0 auto; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cue { animation: none; }
+    .marquee { -webkit-mask-image: none; mask-image: none; }
+    .marquee-track { animation: none; width: auto; direction: inherit; }
+    .marquee-track .logos { flex-wrap: wrap; justify-content: center; row-gap: 20px; }
+    .marquee-track .logos[aria-hidden] { display: none; }
+    .bar, .btn, .cue, .dots button::before, .faq summary::after, .fade-on .slide, .fade-on .slide.on { transition: none; }
+  }
+
+  @media (min-width: 900px) {
+    :root { --pad: 32px; --header-h: 72px; --hh: 75px; }
+    .tools { gap: 10px; }
+    .hero { padding: 56px 0 72px; }
+    .hero .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .hero h1 { font-size: 52px; }
+    .hero .art { margin-top: 0; }
+    .brands { padding: 16px 0 64px; }
+    .logos img { height: 40px; }
+    .logos li { padding: 0 30px; }
+    .hero .btn, .close .btn { width: auto; display: inline-flex; padding: 0 32px; }
+    .micro { text-align: start; }
+    .stage { padding-top: 72px; }
+    .steps h2, .close h2, .faq h2, .pricing h2 { font-size: 34px; }
+    .slide-inner { display: grid; grid-template-columns: minmax(0, 480px) 1fr; gap: 56px; align-items: center; }
+    .slide .art { margin: 0; }
+    .slide h3 { font-size: 28px; }
+    .slide p { margin-top: 14px; font-size: 18px; }
+    .fade-on .stage { padding-top: 28px; }
+    .fade-on .slide-inner { flex-direction: row; gap: 56px; }
+    .fade-on .slide-copy { flex: 1 1 0; width: auto; }
+    .close { padding: 72px 0 96px; }
+    .close .wrap { text-align: center; }
+    .trust { padding: 64px 0; }
+    .facts { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .faq .wrap { max-width: 760px; }
+    .pricing { padding: 80px 0 96px; }
+    .card { padding: 32px; }
+    .trial .ticks { grid-template-columns: 1fr 1fr; gap: 12px 32px; }
+    .plans { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .plan .ticks { margin-bottom: 28px; }
+    .plan .btn { margin-top: auto; }
+    .includes .ticks { grid-template-columns: 1fr 1fr; gap: 12px 32px; }
+  }
+</style>
+</head>
+<body>
+<svg class="filters" aria-hidden="true" focusable="false">
+  <!-- One-colour client logos: ink in light mode, #EAF2E6 in dark; "knock" also drops white parts inside a logo -->
+  <filter id="ink-light" color-interpolation-filters="sRGB"><feColorMatrix values="0 0 0 0 .1216  0 0 0 0 .2275  0 0 0 0 .1216  0 0 0 1 0"/></filter>
+  <filter id="ink-dark" color-interpolation-filters="sRGB"><feColorMatrix values="0 0 0 0 .9176  0 0 0 0 .949  0 0 0 0 .902  0 0 0 1 0"/></filter>
+  <filter id="knock-light" color-interpolation-filters="sRGB"><feColorMatrix values="0 0 0 0 .1216  0 0 0 0 .2275  0 0 0 0 .1216  -.765 -2.575 -.26 3.2 0"/></filter>
+  <filter id="knock-dark" color-interpolation-filters="sRGB"><feColorMatrix values="0 0 0 0 .9176  0 0 0 0 .949  0 0 0 0 .902  -.765 -2.575 -.26 3.2 0"/></filter>
+</svg>
+
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="#top" data-i-aria="home_aria" aria-label="qeen home"><svg class="logo-svg" viewBox="0 0 1920 590.56" aria-hidden="true"><path d="M1919.99,403.94v-182.42c0-.47,0-.95,0-1.42,0-121.21-98.26-219.47-219.47-219.47-121.21,0-219.48,98.26-219.48,219.47v184.24h0s0,0,0,0c0,18.76,15.21,33.97,33.97,33.97,18.76,0,33.97-15.21,33.97-33.97,0-.22-.01-.43-.02-.65v-183.59c0-83.69,67.85-151.55,151.55-151.55,83.7,0,151.54,67.85,151.54,151.54v183.79c0,.15-.01.3-.01.45,0,18.76,15.21,33.97,33.97,33.97s33.97-15.21,33.97-33.97c0-.13,0-.27,0-.4Z"/><path d="M1426.3,218.48C1425.77,97.72,1327.71,0,1206.84,0c-121.21,0-219.47,98.27-219.47,219.48,0,120.81,97.61,218.82,218.27,219.46.4,0,.79,0,1.2,0,.4,0,.79,0,1.2,0,18.21-.63,32.77-15.58,32.77-33.95,0-18.76-15.21-33.96-33.97-33.96-83.7,0-151.55-67.85-151.55-151.55,0-83.7,67.85-151.55,151.55-151.55,72.02,0,132.31,50.23,147.73,117.58h-171.34,0c-18.76,0-33.97,15.22-33.97,33.98,0,18.76,15.21,33.97,33.97,33.97h0s171.34,0,171.34,0h37.78,0c18.42,0,33.43-14.68,33.95-32.98,0-.33,0-.67,0-1s0-.67,0-1Z"/><path d="M932.62,218.48C932.08,97.72,834.03,0,713.16,0c-121.21,0-219.47,98.27-219.47,219.48,0,120.81,97.61,218.82,218.27,219.46.4,0,.79,0,1.2,0,.4,0,.79,0,1.2,0,18.21-.63,32.77-15.58,32.77-33.95,0-18.76-15.21-33.96-33.97-33.96-83.7,0-151.55-67.85-151.55-151.55,0-83.7,67.85-151.55,151.55-151.55,72.02,0,132.31,50.23,147.73,117.58h-171.34,0c-18.76,0-33.97,15.22-33.97,33.98,0,18.76,15.21,33.97,33.97,33.97h0s171.34,0,171.34,0h37.78,0c18.42,0,33.43-14.68,33.95-32.98,0-.33,0-.67,0-1,0-.33,0-.67,0-1Z"/><path d="M219.47,0C98.26,0,0,98.26,0,219.48c0,121.21,98.26,219.47,219.47,219.47,1.15,0,2.3,0,3.44-.03.94,0,1.88-.03,2.81-.06.51,0,1.01-.02,1.52-.04,1.07-.04,2.13-.09,3.19-.13,1.2-.06,2.38-.13,3.56-.21.08,0,.16,0,.24-.02,1.07-.06,2.13-.14,3.2-.24.11,0,.21,0,.32-.02,1.1-.09,2.19-.19,3.3-.3.17,0,.33-.02.5-.05.98-.09,1.96-.2,2.93-.31.35-.04.68-.08,1.01-.12.73-.09,1.46-.18,2.19-.28.76-.09,1.5-.19,2.24-.3,16.2-2.56,28.59-16.6,28.59-33.54,0-18.76-15.2-33.96-33.96-33.96-1.46,0-2.91.09-4.33.28-.49.06-.98.13-1.47.19-.63.09-1.25.16-1.88.23-.64.08-1.27.14-1.91.21-.81.08-1.62.16-2.43.22-.72.06-1.42.12-2.14.17-.28.02-.55.05-.83.06-.74.05-1.49.09-2.23.13-.67.04-1.35.07-2.01.09-.09,0-.18,0-.27,0-.28,0-.57.02-.85.03-.57.02-1.15.03-1.72.04-1,.02-2.01.03-3.02.03-83.7,0-151.55-67.85-151.55-151.54,0-83.7,67.85-151.55,151.55-151.55,9.81,0,19.4.93,28.69,2.71,1.23.24,2.47.49,3.7.76,4.91,1.07,9.73,2.38,14.46,3.91,1.18.39,2.35.78,3.52,1.2,9.34,3.29,18.25,7.46,26.65,12.43,2.1,1.24,4.17,2.53,6.2,3.87,1.53,1.01,3.03,2.04,4.51,3.09.99.7,1.97,1.42,2.95,2.15.49.37.97.73,1.45,1.1,1.45,1.11,2.87,2.24,4.28,3.4,1.4,1.16,2.78,2.34,4.14,3.55.9.8,1.8,1.62,2.69,2.45,1.33,1.24,2.64,2.51,3.92,3.79,16.71,16.71,29.54,37.3,37.01,60.31.53,1.6,1.01,3.22,1.49,4.84.09.34.2.68.29,1.02.24.87.48,1.75.71,2.63.24.91.47,1.82.68,2.74.38,1.55.73,3.11,1.05,4.69.94,4.51,1.68,9.09,2.19,13.73.2,1.79.38,3.58.51,5.37.3,3.91.46,7.85.46,11.83,0,.65,0,1.31-.02,1.96v335.16c0,18.76,15.2,33.97,33.97,33.97,18.76,0,33.97-15.21,33.97-33.97V219.47C438.94,98.25,340.68,0,219.47,0Z"/></svg></a>
+    <div class="tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch to dark mode"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+      <button class="pill" id="lang" type="button" lang="ar" data-i-aria="lang_pill_aria" aria-label="Switch to Arabic"><span data-i="lang_pill">عربي</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg></button>
+      <a class="btn-sm" data-cta href="https://grow.qeen.ai/console/start.html?mode=signup"><span data-i="header_cta">Start free</span></a>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"><span id="progress"></span></div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1 data-i-html="h1">WHAT DO I <span class="hl">POST</span> TODAY?</h1>
+        <p data-i="sub" class="sub">Every week, we bring you ideas that fit your business, and a clear plan to make them.</p>
+        <a class="btn" id="hero-cta" data-cta href="https://grow.qeen.ai/console/start.html?mode=signup"><span data-i="cta">Get my first ideas free</span></a>
+        <p data-i="micro" class="micro">No credit card required</p>
+      </div>
+      <div class="art">
+        <img data-light="img/hero-light.webp" data-dark="img/hero-dark.webp" width="1080" height="1080" decoding="async" id="hero-img" fetchpriority="high" data-i-alt="hero_alt" alt="An open blank notebook with a lime-tipped pencil, surrounded by crumpled paper balls."><noscript><img src="img/hero-light.webp" width="1080" height="1080" alt="An open blank notebook with a lime-tipped pencil, surrounded by crumpled paper balls."></noscript>
+        <script>(function (i) { i.src = i.getAttribute("data-" + (document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light")); })(document.getElementById("hero-img"));</script>
+      </div>
+    </div>
+  </section>
+
+  <section class="brands" aria-labelledby="brands-title">
+    <div class="wrap">
+      <h2 id="brands-title" data-i="brands_title">Trusted by 100+ GCC brands</h2>
+    </div>
+    <div class="marquee" tabindex="0" role="region" data-i-aria="brands_aria" aria-label="qeen clients">
+      <div class="marquee-track">
+        <ul class="logos">
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-junaid.webp" width="212" height="86" alt="Junaid" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-jumia.webp" width="677" height="115" alt="Jumia" class="knock" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-saco.webp" width="134" height="58" alt="SACO" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-hnak.webp" width="498" height="351" alt="HNAK" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-whites.webp" width="371" height="93" alt="Whites" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-ashley.webp" width="534" height="77" alt="Ashley" class="knock" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-6thstreet.webp" width="632" height="84" alt="6thStreet" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-alrugaib.webp" width="230" height="35" alt="Alrugaib Furniture" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-nabataty.webp" width="128" height="74" alt="Nabataty" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-brownloft-alpha.webp" width="375" height="111" alt="Brown Loft" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-rihal.webp" width="197" height="109" alt="Rihal" class="knock" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-odora2.webp" width="283" height="55" alt="Odora" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-loudyplus.webp" width="323" height="88" alt="Loudy Plus" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-bornoutside.webp" width="348" height="83" alt="Born Outside" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-ayla2.webp" width="179" height="64" alt="Ayla" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-galeries.svg" width="148" height="77" alt="Galeries" decoding="async"></li>
+        </ul>
+        <ul class="logos" aria-hidden="true">
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-junaid.webp" width="212" height="86" alt="" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-jumia.webp" width="677" height="115" alt="" class="knock" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-saco.webp" width="134" height="58" alt="" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-hnak.webp" width="498" height="351" alt="" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-whites.webp" width="371" height="93" alt="" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-ashley.webp" width="534" height="77" alt="" class="knock" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-6thstreet.webp" width="632" height="84" alt="" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-alrugaib.webp" width="230" height="35" alt="" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-nabataty.webp" width="128" height="74" alt="" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-brownloft-alpha.webp" width="375" height="111" alt="" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-rihal.webp" width="197" height="109" alt="" class="knock" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-odora2.webp" width="283" height="55" alt="" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-loudyplus.webp" width="323" height="88" alt="" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-bornoutside.webp" width="348" height="83" alt="" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-ayla2.webp" width="179" height="64" alt="" decoding="async"></li>
+          <li><img data-logo="https://go.qeen.ai/media/brands/brand-galeries.svg" width="148" height="77" alt="" decoding="async"></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps" id="steps" aria-labelledby="steps-title" aria-roledescription="carousel">
+    <div class="pin" id="pin">
+      <div class="stage" id="stage">
+        <h2 id="steps-title" data-i="steps_title">We bring the ideas. You choose what to make</h2>
+        <div class="stage-body">
+          <ol class="track" id="track">
+            <li class="slide on" aria-roledescription="slide">
+              <div class="slide-inner">
+                <div class="art">
+                  <img data-light="img/slide1-light.webp" data-dark="img/slide1-dark.webp" width="1080" height="1080" decoding="async" data-i-alt="alt1" alt="An open notebook full of handwritten post ideas for a ladies&#x27; salon, with a lime-tipped pencil beside it."><noscript><img src="img/slide1-light.webp" width="1080" height="1080" alt="An open notebook full of handwritten post ideas for a ladies&#x27; salon, with a lime-tipped pencil beside it."></noscript>
+                </div>
+                <div class="slide-copy">
+                  <div class="head"><span class="num" aria-hidden="true">1</span><h3 data-i="s1_h">Ideas from everywhere, every week</h3></div>
+                  <p data-i="s1_p">Trends and sounds on TikTok and Instagram. Holidays, events and the weather in your city. Your competitors&#x27; ads and offers. Rising Google searches. And the questions your customers keep asking in chats and comments.</p>
+                </div>
+              </div>
+            </li>
+            <li class="slide" aria-roledescription="slide">
+              <div class="slide-inner">
+                <div class="art">
+                  <img data-light="img/slide2-light.webp" data-dark="img/slide2-dark.webp" width="1080" height="1080" decoding="async" data-i-alt="alt2" alt="The idea “Eid with the girls: group booking” circled in lime, with a lime sticky note: “Why now: Eid in two weeks”."><noscript><img src="img/slide2-light.webp" width="1080" height="1080" alt="The idea “Eid with the girls: group booking” circled in lime, with a lime sticky note: “Why now: Eid in two weeks”."></noscript>
+                </div>
+                <div class="slide-copy">
+                  <div class="head"><span class="num" aria-hidden="true">2</span><h3 data-i="s2_h">Only the ideas that fit you</h3></div>
+                  <p data-i="s2_p">Each idea is checked against your services, your offers and your customers. You get the few worth making, each with the reason it fits right now.</p>
+                </div>
+              </div>
+            </li>
+            <li class="slide" aria-roledescription="slide">
+              <div class="slide-inner">
+                <div class="art">
+                  <img data-light="img/slide3-light.webp" data-dark="img/slide3-dark.webp" width="1080" height="1080" decoding="async" data-i-alt="alt3" alt="The notebook now holds a content plan: three storyboard sketches and a checked list of reel, story and post."><noscript><img src="img/slide3-light.webp" width="1080" height="1080" alt="The notebook now holds a content plan: three storyboard sketches and a checked list of reel, story and post."></noscript>
+                </div>
+                <div class="slide-copy">
+                  <div class="head"><span class="num" aria-hidden="true">3</span><h3 data-i="s3_h">A clear plan for every idea</h3></div>
+                  <p data-i="s3_p">What to film, which format, where it runs and when. Shoot it yourself on your phone (and if you want, AI tools to produce it are right there).</p>
+                </div>
+              </div>
+            </li>
+            <li class="slide" aria-roledescription="slide">
+              <div class="slide-inner">
+                <div class="art">
+                  <img data-light="img/slide4-light.webp" data-dark="img/slide4-dark.webp" width="1080" height="1080" decoding="async" data-i-alt="alt4" alt="A year-planner calendar by the notebook, with lime markers for Ramadan, Eid, National Day and Back to school."><noscript><img src="img/slide4-light.webp" width="1080" height="1080" alt="A year-planner calendar by the notebook, with lime markers for Ramadan, Eid, National Day and Back to school."></noscript>
+                </div>
+                <div class="slide-copy">
+                  <div class="head"><span class="num" aria-hidden="true">4</span><h3 data-i="s4_h">With you all year</h3></div>
+                  <p data-i="s4_p">New ideas every week, planned around your year: Ramadan, Eid, National Day, summer and back to school. Nothing goes live without your OK.</p>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="dots" role="group" data-i-aria="dots_aria" aria-label="Choose a step">
+            <button type="button" data-i-aria="dot1" aria-label="Go to step 1" aria-current="true"></button>
+            <button type="button" data-i-aria="dot2" aria-label="Go to step 2" aria-current="false"></button>
+            <button type="button" data-i-aria="dot3" aria-label="Go to step 3" aria-current="false"></button>
+            <button type="button" data-i-aria="dot4" aria-label="Go to step 4" aria-current="false"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" aria-labelledby="close-title">
+    <div class="wrap">
+      <h2 id="close-title" data-i="close">Every week, know exactly what to post.</h2>
+      <a class="btn" data-cta href="https://grow.qeen.ai/console/start.html?mode=signup"><span data-i="cta">Get my first ideas free</span></a>
+    </div>
+  </section>
+
+  <section class="trust" data-i-aria="trust_aria" aria-label="How qeen works with you">
+    <div class="wrap">
+      <ul class="facts">
+        <li>
+          <svg viewBox="0 0 28 28" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="14" r="11"/><path d="M9 14.5l3.4 3.4L19.5 10.5"/></svg>
+          <span data-i="trust1">You approve every idea before it goes live.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 28 28" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="14" height="22" rx="3"/><path d="M12 21h4"/><circle cx="14" cy="12" r="3"/></svg>
+          <span data-i="trust2">Shoot it on your phone, or use our AI tools: your choice.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 28 28" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v13M8.5 11.5L14 17l5.5-5.5"/><path d="M5 19v3a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"/></svg>
+          <span data-i="trust3">Everything you make is yours to post anywhere.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <h2 id="faq-title" data-i="faq_title">Questions</h2>
+      <details>
+        <summary data-i="faq1_q">Where do the ideas come from?</summary>
+        <p data-i="faq1_a">From what is trending on social media now, the holidays and events coming up, your services and offers, what your competitors are advertising, and what your customers ask in their chats. Each idea says why it was picked.</p>
+      </details>
+      <details>
+        <summary data-i="faq2_q">Do I have to use AI to make the content?</summary>
+        <p data-i="faq2_a">No. You get the idea and a clear plan, and you can shoot it yourself on your phone. If you want help producing it, AI tools are built in.</p>
+      </details>
+      <details>
+        <summary data-i="faq3_q">What if my business is new?</summary>
+        <p data-i="faq3_a">You can start today. qeen learns your business from your website or Instagram, then uses your offers, the season and what is happening in your city. You don&#x27;t need any history.</p>
+      </details>
+      <details>
+        <summary data-i="faq4_q">Does it work in Arabic?</summary>
+        <p data-i="faq4_a">Yes. Ideas and content in Arabic or English, in the dialect your customers use, like Emirati, Saudi, Kuwaiti or Qatari, and checked against local norms such as modesty and Ramadan timing.</p>
+      </details>
+      <details>
+        <summary data-i="faq5_q">What happens after the 7 days?</summary>
+        <p data-i="faq5_a">Pick a plan to keep going: Starter at AED 199 a month or Pro at AED 299 a month. Ad spend is always paid directly to the ad platform.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="pricing" aria-labelledby="pricing-title">
+    <div class="wrap">
+      <h2 id="pricing-title" data-i="pricing_title">Simple pricing</h2>
+      <div class="trial card">
+        <h3 data-i="trial_title">Your first ideas, free for 7 days</h3>
+        <p data-i="trial_text">Sign up free, see the ideas qeen finds for your business, and go live when you&#x27;re ready.</p>
+        <h4 data-i="first7_title">In your first 7 days</h4>
+        <ul class="ticks">
+            <li data-i="first7_1">qeen learns your business from your website, and you confirm it.</li>
+            <li data-i="first7_2">Your first ideas, from what is happening in your business and around it.</li>
+            <li data-i="first7_3">Your first videos, ready for ads, posts, reels and stories.</li>
+            <li data-i="first7_4">Every idea comes with why it fits now.</li>
+        </ul>
+        <div class="notes">
+          <p><strong data-i="needs_label">You&#x27;ll need</strong>: <span data-i="needs">your website or Instagram, and a few photos from your phone. No photo shoot.</span></p>
+          <p><strong data-i="note2_label">Your videos are yours</strong>: <span data-i="note2">download them and post them anywhere, during the trial and after.</span></p>
+          <p><strong data-i="after_label">After the trial</strong>: <span data-i="after">pick a plan. Ad spend is always paid directly to the ad platform.</span></p>
+        </div>
+      </div>
+      <ul class="plans">
+        <li class="plan card">
+          <h3 data-i="starter_name">Starter</h3>
+          <p data-i="starter_who" class="for">One service, one branch.</p>
+          <p class="price"><span data-i="starter_price" class="amount">AED 199</span><span data-i="per" class="per">/ month after the trial</span></p>
+          <ul class="ticks">
+            <li data-i="starter_1">New video ideas every week.</li>
+            <li data-i="starter_2">qeen watches your business, your offers and the season.</li>
+            <li data-i="starter_3">5 new videos a month, each from a fresh idea.</li>
+          </ul>
+          <a class="btn" data-cta href="https://grow.qeen.ai/console/start.html?mode=signup"><span data-i="plan_cta">Start free</span></a>
+        </li>
+        <li class="plan card">
+          <h3 data-i="pro_name">Pro</h3>
+          <p data-i="pro_who" class="for">Several services or branches.</p>
+          <p class="price"><span data-i="pro_price" class="amount">AED 299</span><span data-i="per" class="per">/ month after the trial</span></p>
+          <ul class="ticks">
+            <li data-i="pro_1">New video ideas every week, for each service or branch.</li>
+            <li data-i="pro_2">qeen also watches events and trends in your city.</li>
+            <li data-i="pro_3">10 new videos a month, each from a fresh idea.</li>
+            <li data-i="pro_4">Priority support on WhatsApp.</li>
+          </ul>
+          <a class="btn" data-cta href="https://grow.qeen.ai/console/start.html?mode=signup"><span data-i="plan_cta">Start free</span></a>
+        </li>
+      </ul>
+      <div class="includes">
+        <h3 data-i="includes_title">Every plan includes</h3>
+        <ul class="ticks">
+            <li data-i="inc_1">New ideas every week, from your business and what is happening around it.</li>
+            <li data-i="inc_2">A clear plan for each idea: what to make, where it runs and when.</li>
+            <li data-i="inc_3">Content made for you if you want it, for ads, posts, reels and stories.</li>
+            <li data-i="inc_4">Each idea explained simply: what qeen saw and why it fits now.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-brand"><svg class="logo-svg" viewBox="0 0 1920 590.56" aria-hidden="true"><path d="M1919.99,403.94v-182.42c0-.47,0-.95,0-1.42,0-121.21-98.26-219.47-219.47-219.47-121.21,0-219.48,98.26-219.48,219.47v184.24h0s0,0,0,0c0,18.76,15.21,33.97,33.97,33.97,18.76,0,33.97-15.21,33.97-33.97,0-.22-.01-.43-.02-.65v-183.59c0-83.69,67.85-151.55,151.55-151.55,83.7,0,151.54,67.85,151.54,151.54v183.79c0,.15-.01.3-.01.45,0,18.76,15.21,33.97,33.97,33.97s33.97-15.21,33.97-33.97c0-.13,0-.27,0-.4Z"/><path d="M1426.3,218.48C1425.77,97.72,1327.71,0,1206.84,0c-121.21,0-219.47,98.27-219.47,219.48,0,120.81,97.61,218.82,218.27,219.46.4,0,.79,0,1.2,0,.4,0,.79,0,1.2,0,18.21-.63,32.77-15.58,32.77-33.95,0-18.76-15.21-33.96-33.97-33.96-83.7,0-151.55-67.85-151.55-151.55,0-83.7,67.85-151.55,151.55-151.55,72.02,0,132.31,50.23,147.73,117.58h-171.34,0c-18.76,0-33.97,15.22-33.97,33.98,0,18.76,15.21,33.97,33.97,33.97h0s171.34,0,171.34,0h37.78,0c18.42,0,33.43-14.68,33.95-32.98,0-.33,0-.67,0-1s0-.67,0-1Z"/><path d="M932.62,218.48C932.08,97.72,834.03,0,713.16,0c-121.21,0-219.47,98.27-219.47,219.48,0,120.81,97.61,218.82,218.27,219.46.4,0,.79,0,1.2,0,.4,0,.79,0,1.2,0,18.21-.63,32.77-15.58,32.77-33.95,0-18.76-15.21-33.96-33.97-33.96-83.7,0-151.55-67.85-151.55-151.55,0-83.7,67.85-151.55,151.55-151.55,72.02,0,132.31,50.23,147.73,117.58h-171.34,0c-18.76,0-33.97,15.22-33.97,33.98,0,18.76,15.21,33.97,33.97,33.97h0s171.34,0,171.34,0h37.78,0c18.42,0,33.43-14.68,33.95-32.98,0-.33,0-.67,0-1,0-.33,0-.67,0-1Z"/><path d="M219.47,0C98.26,0,0,98.26,0,219.48c0,121.21,98.26,219.47,219.47,219.47,1.15,0,2.3,0,3.44-.03.94,0,1.88-.03,2.81-.06.51,0,1.01-.02,1.52-.04,1.07-.04,2.13-.09,3.19-.13,1.2-.06,2.38-.13,3.56-.21.08,0,.16,0,.24-.02,1.07-.06,2.13-.14,3.2-.24.11,0,.21,0,.32-.02,1.1-.09,2.19-.19,3.3-.3.17,0,.33-.02.5-.05.98-.09,1.96-.2,2.93-.31.35-.04.68-.08,1.01-.12.73-.09,1.46-.18,2.19-.28.76-.09,1.5-.19,2.24-.3,16.2-2.56,28.59-16.6,28.59-33.54,0-18.76-15.2-33.96-33.96-33.96-1.46,0-2.91.09-4.33.28-.49.06-.98.13-1.47.19-.63.09-1.25.16-1.88.23-.64.08-1.27.14-1.91.21-.81.08-1.62.16-2.43.22-.72.06-1.42.12-2.14.17-.28.02-.55.05-.83.06-.74.05-1.49.09-2.23.13-.67.04-1.35.07-2.01.09-.09,0-.18,0-.27,0-.28,0-.57.02-.85.03-.57.02-1.15.03-1.72.04-1,.02-2.01.03-3.02.03-83.7,0-151.55-67.85-151.55-151.54,0-83.7,67.85-151.55,151.55-151.55,9.81,0,19.4.93,28.69,2.71,1.23.24,2.47.49,3.7.76,4.91,1.07,9.73,2.38,14.46,3.91,1.18.39,2.35.78,3.52,1.2,9.34,3.29,18.25,7.46,26.65,12.43,2.1,1.24,4.17,2.53,6.2,3.87,1.53,1.01,3.03,2.04,4.51,3.09.99.7,1.97,1.42,2.95,2.15.49.37.97.73,1.45,1.1,1.45,1.11,2.87,2.24,4.28,3.4,1.4,1.16,2.78,2.34,4.14,3.55.9.8,1.8,1.62,2.69,2.45,1.33,1.24,2.64,2.51,3.92,3.79,16.71,16.71,29.54,37.3,37.01,60.31.53,1.6,1.01,3.22,1.49,4.84.09.34.2.68.29,1.02.24.87.48,1.75.71,2.63.24.91.47,1.82.68,2.74.38,1.55.73,3.11,1.05,4.69.94,4.51,1.68,9.09,2.19,13.73.2,1.79.38,3.58.51,5.37.3,3.91.46,7.85.46,11.83,0,.65,0,1.31-.02,1.96v335.16c0,18.76,15.2,33.97,33.97,33.97,18.76,0,33.97-15.21,33.97-33.97V219.47C438.94,98.25,340.68,0,219.47,0Z"/></svg><span data-i="slogan">Ideas worth posting, every week.</span></div>
+    <p data-i="copyright">© 2026 qeen — All rights reserved.</p>
+    <nav class="foot-links" data-i-aria="legal_aria" aria-label="Legal">
+      <a href="/"><span data-i="privacy">Privacy</span></a>
+      <a href="https://go.qeen.ai/en/terms"><span data-i="terms">Terms</span></a>
+    </nav>
+  </div>
+</footer>
+
+<button class="cue" id="cue" type="button" data-i-aria="cue" aria-label="See how it works">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#1F3A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+</button>
+
+<div class="bar" id="bar">
+  <a class="btn" data-cta href="https://grow.qeen.ai/console/start.html?mode=signup" tabindex="-1"><span data-i="cta">Get my first ideas free</span></a>
+</div>
+
+<script>
+(function () {
+  var D = {"header_cta":["Start free","ابدأ مجاناً"],"lang_pill":["عربي","English"],"lang_pill_aria":["Switch to Arabic","التحويل للإنجليزية"],"theme_to_dark":["Switch to dark mode","التحويل للوضع الداكن"],"theme_to_light":["Switch to light mode","التحويل للوضع الفاتح"],"home_aria":["qeen home","الصفحة الرئيسية لـ qeen"],"micro":["No credit card required","ما تحتاج بطاقة ائتمان"],"cue":["See how it works","شوف كيف تشتغل"],"dots_aria":["Choose a step","اختار خطوة"],"dot1":["Go to step 1","روح للخطوة 1"],"dot2":["Go to step 2","روح للخطوة 2"],"dot3":["Go to step 3","روح للخطوة 3"],"dot4":["Go to step 4","روح للخطوة 4"],"trust_aria":["How qeen works with you","كيف تشتغل qeen معاك"],"faq_title":["Questions","أسئلة"],"pricing_title":["Simple pricing","أسعار واضحة"],"first7_title":["In your first 7 days","في أول 7 أيام"],"after_label":["After the trial","بعد التجربة"],"needs_label":["You'll need","تحتاج"],"per":["/ month after the trial","/ شهرياً بعد التجربة"],"starter_name":["Starter","الأساسية"],"starter_who":["One service, one branch.","خدمة وحدة، فرع واحد."],"starter_price":["AED 199","199 درهم"],"pro_name":["Pro","برو"],"pro_who":["Several services or branches.","أكثر من خدمة أو فرع."],"pro_price":["AED 299","299 درهم"],"plan_cta":["Start free","ابدأ مجاناً"],"includes_title":["Every plan includes","في كل الباقات"],"brands_title":["Trusted by 100+ GCC brands","أكثر من 100 علامة خليجية تثق في qeen"],"brands_aria":["qeen clients","عملاء qeen"],"copyright":["© 2026 qeen — All rights reserved.","© 2026 qeen — جميع الحقوق محفوظة."],"privacy":["Privacy","الخصوصية"],"terms":["Terms","الشروط"],"legal_aria":["Legal","روابط قانونية"],"steps_title":["We bring the ideas. You choose what to make","إحنا نجيب الأفكار، وإنت تختار شو تسوي"],"s1_h":["Ideas from everywhere, every week","أفكار من كل مكان، كل أسبوع"],"s1_p":["Trends and sounds on TikTok and Instagram. Holidays, events and the weather in your city. Your competitors' ads and offers. Rising Google searches. And the questions your customers keep asking in chats and comments.","الترندات والأصوات على تيك توك وإنستغرام. المناسبات والفعاليات والطقس في مدينتك. إعلانات وعروض منافسينك. اللي يدوّر عليه الناس في قوقل. وأسئلة زباينك اللي تتكرر في الشات والتعليقات."],"s2_h":["Only the ideas that fit you","بس الأفكار اللي تناسبك"],"s3_h":["A clear plan for every idea","خطة واضحة لكل فكرة"],"s3_p":["What to film, which format, where it runs and when. Shoot it yourself on your phone (and if you want, AI tools to produce it are right there).","شو تصوّر، أي شكل، وين ينزل ومتى. صوّرها بنفسك من تلفونك (وإذا تبي، أدوات الذكاء الاصطناعي جاهزة عندك)."],"s4_h":["With you all year","معاك طول السنة"],"s4_p":["New ideas every week, planned around your year: Ramadan, Eid, National Day, summer and back to school. Nothing goes live without your OK.","أفكار جديدة كل أسبوع، مخططة على سنتك: رمضان، العيد، اليوم الوطني، الصيف ورجعة المدارس. وما ينزل شي بدون موافقتك."],"trust1":["You approve every idea before it goes live.","توافق على كل فكرة قبل لا تنزل."],"trust2":["Shoot it on your phone, or use our AI tools: your choice.","صوّر من تلفونك، أو استخدم أدوات الذكاء الاصطناعي عندنا: الخيار لك."],"trust3":["Everything you make is yours to post anywhere.","كل اللي تسويه ملكك، تنزّله وين ما تبي."],"faq1_q":["Where do the ideas come from?","من وين تجي الأفكار؟"],"faq1_a":["From what is trending on social media now, the holidays and events coming up, your services and offers, what your competitors are advertising, and what your customers ask in their chats. Each idea says why it was picked.","من اللي ترند الحين في السوشال ميديا، والمناسبات والفعاليات الجاية، وخدماتك وعروضك، واللي يعلن عنه منافسينك، واللي يسألون عنه زباينك في الشات. ومع كل فكرة، qeen تقول لك ليش اختارتها."],"faq2_q":["Do I have to use AI to make the content?","لازم أستخدم الذكاء الاصطناعي عشان أسوي المحتوى؟"],"faq2_a":["No. You get the idea and a clear plan, and you can shoot it yourself on your phone. If you want help producing it, AI tools are built in.","لا. يوصلك الفكرة وخطة واضحة، وتقدر تصوّرها بنفسك من تلفونك. وإذا تبي مساعدة في الإنتاج، أدوات الذكاء الاصطناعي موجودة."],"faq4_q":["Does it work in Arabic?","تشتغل بالعربي؟"],"faq4_a":["Yes. Ideas and content in Arabic or English, in the dialect your customers use, like Emirati, Saudi, Kuwaiti or Qatari, and checked against local norms such as modesty and Ramadan timing.","أكيد. الأفكار والمحتوى بالعربي أو الإنجليزي، وباللهجة اللي يتكلم فيها زباينك، إماراتي أو سعودي أو كويتي أو قطري وغيرها، ومراجَعة حسب عادات المنطقة مثل الحشمة وتوقيت رمضان."],"faq5_q":["What happens after the 7 days?","شو يصير بعد الـ7 أيام؟"],"faq5_a":["Pick a plan to keep going: Starter at AED 199 a month or Pro at AED 299 a month. Ad spend is always paid directly to the ad platform.","اختار باقة عشان تكمّل: الأساسية بـ199 درهم بالشهر أو برو بـ299 درهم بالشهر. ومصاريف الإعلانات تدفعها دايماً للمنصة مباشرة."],"trial_title":["Your first ideas, free for 7 days","أول أفكارك مجاناً لمدة 7 أيام"],"trial_text":["Sign up free, see the ideas qeen finds for your business, and go live when you're ready.","سجّل مجاناً، شوف الأفكار اللي تلقاها qeen لشغلك، ونزّل لما تكون جاهز."],"first7_1":["qeen learns your business from your website, and you confirm it.","qeen تتعرف على شغلك من موقعك، وإنت تأكد."],"first7_2":["Your first ideas, from what is happening in your business and around it.","أول أفكارك، من اللي صاير في شغلك وحواليه."],"first7_3":["Your first videos, ready for ads, posts, reels and stories.","أول فيديوهاتك، جاهزة للإعلانات والبوستات والريلز والستوريز."],"first7_4":["Every idea comes with why it fits now.","مع كل فكرة سبب ليش تناسب الحين."],"needs":["your website or Instagram, and a few photos from your phone. No photo shoot.","موقعك أو إنستغرامك، وكم صورة من تلفونك. بدون جلسة تصوير."],"note2_label":["Your videos are yours","فيديوهاتك ملكك"],"note2":["download them and post them anywhere, during the trial and after.","نزّلها وانشرها وين ما تبي، خلال التجربة وبعدها."],"after":["pick a plan. Ad spend is always paid directly to the ad platform.","اختار باقتك. ومصاريف الإعلانات تدفعها دايماً للمنصة مباشرة."],"starter_1":["New video ideas every week.","أفكار فيديو جديدة كل أسبوع."],"starter_2":["qeen watches your business, your offers and the season.","qeen تتابع شغلك وعروضك والموسم."],"starter_3":["5 new videos a month, each from a fresh idea.","5 فيديوهات جديدة كل شهر، كل واحد من فكرة جديدة."],"pro_1":["New video ideas every week, for each service or branch.","أفكار فيديو جديدة كل أسبوع، لكل خدمة أو فرع."],"pro_2":["qeen also watches events and trends in your city.","qeen تتابع بعد الفعاليات والترندات في مدينتك."],"pro_3":["10 new videos a month, each from a fresh idea.","10 فيديوهات جديدة كل شهر، كل واحد من فكرة جديدة."],"pro_4":["Priority support on WhatsApp.","دعم أولوية على الواتساب."],"inc_1":["New ideas every week, from your business and what is happening around it.","أفكار جديدة كل أسبوع، من شغلك واللي صاير حواليه."],"inc_2":["A clear plan for each idea: what to make, where it runs and when.","خطة واضحة لكل فكرة: شو تسوي، وين ينزل ومتى."],"inc_3":["Content made for you if you want it, for ads, posts, reels and stories.","محتوى نسويه لك إذا تبي، للإعلانات والبوستات والريلز والستوريز."],"inc_4":["Each idea explained simply: what qeen saw and why it fits now.","كل فكرة مشروحة ببساطة: شو شافت qeen وليش تناسب الحين."],"alt1":["An open notebook full of handwritten post ideas for a ladies' salon, with a lime-tipped pencil beside it.","دفتر مفتوح مليان أفكار مكتوبة بخط اليد لصالون نسائي، وجنبه قلم رأسه ليموني."],"alt2":["The idea “Eid with the girls: group booking” circled in lime, with a lime sticky note: “Why now: Eid in two weeks”.","فكرة «Eid with the girls: group booking» عليها دائرة ليمونية، وجنبها ورقة لاصقة: «Why now: Eid in two weeks»."],"alt3":["The notebook now holds a content plan: three storyboard sketches and a checked list of reel, story and post.","الدفتر صار فيه خطة محتوى: ثلاث رسومات ستوري بورد وقائمة مؤشرة للريل والستوري والبوست."],"alt4":["A year-planner calendar by the notebook, with lime markers for Ramadan, Eid, National Day and Back to school.","تقويم سنوي جنب الدفتر، بعلامات ليمونية لرمضان والعيد واليوم الوطني ورجعة المدارس."],"title":["What do I post today? | qeen","شو أنزّل اليوم؟ | qeen"],"h1":["WHAT DO I <span class=\"hl\">POST</span> TODAY?","شو <span class=\"hl\">أنزّل</span> اليوم؟"],"sub":["Every week, we bring you ideas that fit your business, and a clear plan to make them.","كل أسبوع نجيب لك أفكار تناسب شغلك، ومعها خطة واضحة عشان تسويها."],"cta":["Get my first ideas free","أبي أول أفكاري مجاناً"],"hero_alt":["An open blank notebook with a lime-tipped pencil, surrounded by crumpled paper balls.","دفتر مفتوح فاضي وعليه قلم رأسه ليموني، وحواليه أوراق مكرمشة."],"s2_p":["Each idea is checked against your services, your offers and your customers. You get the few worth making, each with the reason it fits right now.","كل فكرة نقارنها بخدماتك وعروضك وزباينك. يوصلك بس اللي تستاهل تتسوّى، ومع كل وحدة سبب ليش تناسب الحين."],"close":["Every week, know exactly what to post.","كل أسبوع، تعرف بالضبط شو تنزّل."],"faq3_q":["What if my business is new?","شو لو شغلي جديد؟"],"faq3_a":["You can start today. qeen learns your business from your website or Instagram, then uses your offers, the season and what is happening in your city. You don't need any history.","تقدر تبدأ اليوم. qeen تتعرف على شغلك من موقعك أو إنستغرامك، وبعدين تستخدم عروضك والموسم واللي صاير في مدينتك. ما تحتاج أي تاريخ سابق."],"slogan":["Ideas worth posting, every week.","أفكار تستاهل تنزل، كل أسبوع."]};
+  var root = document.documentElement;
+  var LANGS = ["en", "ar"];
+  function idx(l) { return l === "ar" ? 1 : 0; }
+
+  // Carry the page's query parameters (UTMs etc.) over to every signup link.
+  var params = new URLSearchParams(location.search);
+  document.querySelectorAll("[data-cta]").forEach(function (a) {
+    var url = new URL(a.href);
+    params.forEach(function (v, k) { if (k !== "lang" && !url.searchParams.has(k)) url.searchParams.append(k, v); });
+    a.href = url.toString();
+  });
+
+  // ---------- Language ----------
+  function applyLang(l) {
+    var i = idx(l);
+    root.lang = l; root.dir = l === "ar" ? "rtl" : "ltr";
+    document.querySelectorAll("[data-i]").forEach(function (el) { el.textContent = D[el.dataset.i][i]; });
+    document.querySelectorAll("[data-i-html]").forEach(function (el) { el.innerHTML = D[el.dataset.iHtml][i]; });
+    document.querySelectorAll("[data-i-alt]").forEach(function (el) { el.alt = D[el.dataset.iAlt][i]; });
+    document.querySelectorAll("[data-i-aria]").forEach(function (el) { el.setAttribute("aria-label", D[el.dataset.iAria][i]); });
+    document.title = D.title[i];
+    document.querySelector('meta[name="description"]').content = D.sub[i];
+    document.querySelector('meta[property="og:title"]').content = D.title[i];
+    document.querySelector('meta[property="og:description"]').content = D.sub[i];
+    var pill = document.getElementById("lang");
+    pill.setAttribute("lang", l === "ar" ? "en" : "ar");
+    updateThemeLabel();
+  }
+  document.getElementById("lang").addEventListener("click", function () {
+    var l = root.lang === "ar" ? "en" : "ar";
+    try { localStorage.setItem("qeen-lang", l); } catch (e) {}
+    applyLang(l);
+    measure();
+  });
+
+  // ---------- Theme ----------
+  var themeBtn = document.getElementById("theme");
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+  function updateThemeLabel() {
+    var dark = root.getAttribute("data-theme") === "dark";
+    themeBtn.setAttribute("aria-label", D[dark ? "theme_to_light" : "theme_to_dark"][idx(root.lang)]);
+    themeMeta.content = dark ? "#0E120E" : "#FFFFFF";
+  }
+  themeBtn.addEventListener("click", function () {
+    var t = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", t);
+    try { localStorage.setItem("qeen-theme", t); } catch (e) {}
+    updateThemeLabel();
+    setImages();
+  });
+
+  // ---------- Theme images: only the active theme's version is shown ----------
+  var themed = document.querySelectorAll("img[data-light]");
+  function setImages() {
+    var t = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    themed.forEach(function (img) { var src = img.getAttribute("data-" + t); if (img.getAttribute("src") !== src) img.src = src; });
+  }
+  setImages();
+  // Once the page has loaded, fetch the other theme's set so a theme switch is instant.
+  window.addEventListener("load", function () {
+    (window.requestIdleCallback || setTimeout)(function () {
+      var other = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      themed.forEach(function (img) { new Image().src = img.getAttribute("data-" + other); });
+    });
+  });
+
+  // ---------- Client logos: loaded after the hero image ----------
+  var heroImg = document.getElementById("hero-img");
+  function loadLogos() {
+    document.querySelectorAll("img[data-logo]").forEach(function (img) { img.src = img.getAttribute("data-logo"); });
+  }
+  if (heroImg.complete && heroImg.naturalWidth) loadLogos();
+  else { heroImg.addEventListener("load", loadLogos, { once: true }); heroImg.addEventListener("error", loadLogos, { once: true }); }
+
+  applyLang(root.lang === "ar" ? "ar" : "en");
+
+  // ---------- Slider ----------
+  var header = document.querySelector(".header");
+  var pin = document.getElementById("pin");
+  var stage = document.getElementById("stage");
+  var body = stage.querySelector(".stage-body");
+  var title = stage.querySelector("h2");
+  var dotsBox = stage.querySelector(".dots");
+  var track = document.getElementById("track");
+  var slides = track.querySelectorAll(".slide");
+  var copies = track.querySelectorAll(".slide-copy");
+  var n = slides.length;
+  var dots = dotsBox.querySelectorAll("button");
+  var progressLine = document.getElementById("progress");
+  var bar = document.getElementById("bar");
+  var barLink = bar.querySelector("a");
+  var cue = document.getElementById("cue");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var hh = 0, stageH = 1, pinTop = 0, active = -1, ticking = false;
+
+  root.classList.add("fade-on");
+
+  // Load and decode every slide image of the active theme up front, so none flashes in when its turn comes.
+  track.querySelectorAll("img[data-light]").forEach(function (img) { if (img.decode) img.decode().catch(function () {}); });
+
+  // Hidden copy used to find the tallest slide text in either language.
+  var measurer = document.createElement("div");
+  measurer.className = "slide measure";
+  measurer.setAttribute("aria-hidden", "true");
+  track.parentNode.appendChild(measurer);
+
+  function copyHeight(width) {
+    var h = 0;
+    measurer.style.width = width + "px";
+    LANGS.forEach(function (l) {
+      measurer.setAttribute("lang", l); measurer.setAttribute("dir", l === "ar" ? "rtl" : "ltr");
+      for (var s = 1; s <= n; s++) {
+        measurer.innerHTML = '<div class="slide-copy" style="min-height:0"><div class="head"><span class="num">' + s +
+          '</span><h3></h3></div><p></p></div>';
+        measurer.querySelector("h3").textContent = D["s" + s + "_h"][idx(l)];
+        measurer.querySelector("p").textContent = D["s" + s + "_p"][idx(l)];
+        h = Math.max(h, measurer.firstChild.offsetHeight);
+      }
+    });
+    return Math.ceil(h);
+  }
+
+  function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+
+  // Fixed image box, and a text box as tall as the longest slide text, so nothing shifts between slides.
+  function measure() {
+    hh = header.offsetHeight;
+    root.style.setProperty("--hh", hh + "px");
+    root.style.setProperty("--bar-h", bar.offsetHeight + "px");
+    var wide = window.innerWidth >= 900;
+    var innerW = body.clientWidth;
+    var room = body.clientHeight;
+    var img, copyH;
+    if (wide) {
+      img = Math.floor(Math.min(480, (innerW - 56) / 2, room - 8));
+      copyH = copyHeight(innerW - img - 56);
+    } else {
+      copyH = copyHeight(innerW);
+      img = Math.floor(Math.min(innerW, room - copyH - 14));
+    }
+    root.style.setProperty("--copy-h", copyH + "px");
+    root.style.setProperty("--img", Math.max(120, img) + "px");
+    stageH = stage.offsetHeight || 1;
+    pin.style.height = ((n + 1) * stageH) + "px";  // about one screen of scroll per slide
+    pinTop = pin.getBoundingClientRect().top + window.scrollY;
+    update();
+  }
+
+  function position() { return (window.scrollY + hh - pinTop) / stageH; }
+
+  function show(i) {
+    if (i === active) return;
+    active = i;
+    slides.forEach(function (s, j) {
+      s.classList.toggle("on", j === i);
+      s.setAttribute("aria-hidden", j === i ? "false" : "true");
+    });
+    dots.forEach(function (d, j) { d.setAttribute("aria-current", j === i ? "true" : "false"); });
+  }
+
+  function update() {
+    ticking = false;
+    var p = position();
+    show(clamp(Math.floor(p), 0, n - 1));
+    progressLine.style.transform = "scaleX(" + clamp(p / n, 0, 1).toFixed(4) + ")";
+    if (window.scrollY > 10) cue.classList.add("gone");
+  }
+
+  dots.forEach(function (d, i) {
+    d.addEventListener("click", function () {
+      window.scrollTo({ top: pinTop - hh + (i + 0.5) * stageH, behavior: reduce.matches ? "auto" : "smooth" });
+    });
+  });
+  cue.addEventListener("click", function () {
+    window.scrollTo({ top: pinTop - hh + 1, behavior: reduce.matches ? "auto" : "smooth" });
+  });
+
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  window.addEventListener("resize", function () { requestAnimationFrame(measure); });
+  window.addEventListener("load", measure);
+  if (document.fonts) {
+    Promise.all(["800 22px Montserrat", "500 17px Montserrat", "800 22px Tajawal", "500 17px Tajawal"].map(function (f) {
+      return document.fonts.load(f);
+    })).then(measure, measure);
+  }
+  measure();
+
+  // Bottom bar: shown once the hero button has scrolled away, and kept for the rest of the page.
+  var heroCta = document.getElementById("hero-cta");
+  function setBar(show) { bar.classList.toggle("show", show); barLink.tabIndex = show ? 0 : -1; }
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      var e = entries[0];
+      setBar(!e.isIntersecting && e.boundingClientRect.top < 0);
+    }).observe(heroCta);
+  } else {
+    setBar(true);
+  }
+})();
+</script>
+</body>
+</html>
